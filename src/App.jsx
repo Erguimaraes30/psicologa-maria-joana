@@ -14,7 +14,7 @@ import {
 const { CheckCircle2, ChevronLeft, ChevronRight, Menu, Moon, Sparkles, X } =
   icons;
 
-const assetUrl = (path) => `${import.meta.env.BASE_URL}assets/${path}`;
+const assetUrl = (path) => `assets/${path}`;
 
 function Instagram({ size = 18, className = "", ...props }) {
   return (
