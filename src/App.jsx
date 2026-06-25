@@ -14,6 +14,8 @@ import {
 const { CheckCircle2, ChevronLeft, ChevronRight, Menu, Moon, Sparkles, X } =
   icons;
 
+const assetUrl = (path) => `${import.meta.env.BASE_URL}assets/${path}`;
+
 function Instagram({ size = 18, className = "", ...props }) {
   return (
     <svg
@@ -198,7 +200,7 @@ function HeroPhoto() {
       <div className="absolute -right-4 -top-4 size-28 rounded-full border border-gold/35 sm:size-36" />
       <div className="hero-photo-frame relative overflow-hidden rounded-[2rem] border border-white/80 bg-off-white p-3 shadow-art">
         <img
-          src="/assets/maria-joana-hero.jpeg"
+          src={assetUrl("maria-joana-hero.jpeg")}
           alt="Psicóloga Maria Joana em seu consultório"
           width="1085"
           height="1357"
@@ -273,7 +275,7 @@ function About() {
           </div>
           <div className="overflow-hidden rounded-3xl border border-gold/20 bg-white shadow-subtle">
             <img
-              src="/assets/maria-joana-acolhimento.jpeg"
+              src={assetUrl("maria-joana-acolhimento.jpeg")}
               alt="Maria Joana em ambiente acolhedor de atendimento"
               width="1085"
               height="1357"
