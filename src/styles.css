@@ -1,0 +1,185 @@
+@import "tailwindcss";
+
+@theme {
+  --font-serif: "Cormorant Garamond", Georgia, serif;
+  --font-sans: "Inter", ui-sans-serif, system-ui, sans-serif;
+  --color-white: #ffffff;
+  --color-off-white: #f8f4ee;
+  --color-beige: #e9ddcd;
+  --color-gold: #a9792b;
+  --color-gold-dark: #7a5520;
+  --color-brown: #3a2a1d;
+  --color-muted: #7a7168;
+  --shadow-soft: 0 22px 60px rgba(58, 42, 29, 0.12);
+  --shadow-subtle: 0 14px 36px rgba(58, 42, 29, 0.07);
+  --shadow-art: 0 26px 80px rgba(58, 42, 29, 0.14);
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  margin: 0;
+  min-width: 320px;
+  overflow-x: hidden;
+  background: #ffffff;
+  color: #3a2a1d;
+  font-family: var(--font-sans);
+  text-rendering: optimizeLegibility;
+  -webkit-font-smoothing: antialiased;
+}
+
+::selection {
+  background: rgba(169, 121, 43, 0.22);
+  color: #3a2a1d;
+}
+
+@layer base {
+  h2 {
+    font-family: var(--font-serif);
+    font-size: clamp(2.4rem, 5vw, 4.4rem);
+    font-weight: 600;
+    line-height: 0.98;
+    color: var(--color-brown);
+  }
+}
+
+@layer components {
+  .section-pad {
+    padding-block: clamp(4.5rem, 9vw, 8rem);
+  }
+
+  .section-kicker {
+    margin-bottom: 1rem;
+    display: inline-flex;
+    align-items: center;
+    gap: 0.75rem;
+    color: var(--color-gold-dark);
+    font-size: 0.78rem;
+    font-weight: 700;
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+  }
+
+  .section-kicker::after {
+    content: "";
+    width: 2rem;
+    height: 1px;
+    background: var(--color-gold);
+  }
+
+  .icon-link {
+    display: inline-grid;
+    width: 2.75rem;
+    height: 2.75rem;
+    place-items: center;
+    border-radius: 999px;
+    border: 1px solid rgba(169, 121, 43, 0.22);
+    color: var(--color-gold-dark);
+    transition:
+      background-color 180ms ease,
+      border-color 180ms ease,
+      color 180ms ease,
+      transform 180ms ease;
+  }
+
+  .icon-link:hover {
+    transform: translateY(-1px);
+    border-color: rgba(169, 121, 43, 0.55);
+    background: var(--color-off-white);
+    color: var(--color-brown);
+  }
+
+  .hero-photo-frame::after {
+    content: "";
+    position: absolute;
+    inset: 0.75rem;
+    border-radius: 1.45rem;
+    pointer-events: none;
+    background: linear-gradient(
+      115deg,
+      transparent 0%,
+      rgba(255, 255, 255, 0.04) 35%,
+      rgba(255, 255, 255, 0.22) 48%,
+      rgba(255, 255, 255, 0.04) 62%,
+      transparent 100%
+    );
+    transform: translateX(-125%);
+    transition: transform 900ms cubic-bezier(0.22, 1, 0.36, 1);
+    will-change: transform;
+  }
+
+  .hero-photo-frame:hover::after {
+    transform: translateX(125%);
+  }
+
+  .insta-card {
+    position: relative;
+    min-height: 19rem;
+    overflow: hidden;
+    border-radius: 1.5rem;
+    padding: 1.35rem;
+    text-align: left;
+    box-shadow: var(--shadow-subtle);
+    transition:
+      transform 180ms ease,
+      box-shadow 180ms ease,
+      border-color 180ms ease;
+  }
+
+  .insta-card::after {
+    content: "";
+    position: absolute;
+    right: -2.5rem;
+    top: -2.5rem;
+    width: 8rem;
+    height: 8rem;
+    border: 1px solid currentColor;
+    border-radius: 999px;
+    opacity: 0.18;
+  }
+
+  .insta-card:hover {
+    transform: translateY(-4px);
+    box-shadow: var(--shadow-soft);
+  }
+
+  .insta-card-light {
+    border: 1px solid rgba(58, 42, 29, 0.1);
+    background: #ffffff;
+    color: var(--color-brown);
+  }
+
+  .insta-card-dark {
+    border: 1px solid rgba(255, 255, 255, 0.16);
+    background: linear-gradient(145deg, rgba(58, 42, 29, 0.92), rgba(58, 42, 29, 0.78));
+    color: #ffffff;
+  }
+
+  .insta-card-gold {
+    border: 1px solid rgba(122, 85, 32, 0.24);
+    background: linear-gradient(145deg, #d2b996, #a9792b);
+    color: #ffffff;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  html {
+    scroll-behavior: auto;
+  }
+
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.001ms !important;
+    animation-iteration-count: 1 !important;
+    scroll-behavior: auto !important;
+    transition-duration: 0.001ms !important;
+  }
+
+  .hero-photo-frame::after {
+    animation: none !important;
+    opacity: 0;
+  }
+}
